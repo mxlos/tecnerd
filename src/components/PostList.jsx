@@ -37,7 +37,7 @@ const Wrapper = styled.article`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
   position: absolute;
   top: 0;
   left: 0;
@@ -110,11 +110,11 @@ const PostList = ({ cover, path, date, title, excerpt }) => (
     <Image>
       <Img fluid={cover} />
     </Image>
-    <StyledLink to={path}>
+    <StyledLink target="_blank" href={path}>
       <Info>
-        <span>{date}</span>
         <Title>{title}</Title>
         <span>{excerpt}</span>
+        <h5><span>{date}</span></h5>
       </Info>
     </StyledLink>
   </Wrapper>

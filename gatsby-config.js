@@ -1,4 +1,9 @@
 const config = require('./config/site');
+const dotenv = require('dotenv');
+
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`
+});
 
 module.exports = {
   siteMetadata: {
@@ -10,9 +15,18 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'posts',
-        path: `${__dirname}/content/posts`,
+        path: `${__dirname}/src/images/`,
+        name: 'images',
       },
+    },
+    {
+      resolve: 'gatsby-source-google-spreadsheet',
+      options: {
+          spreadsheetId: '1BujMhjqqlo51HXFE7YyWf11579ADEv-aQRV_QerfzyE',
+          worksheetTitle: 'sheet1',
+          typePrefix: "GoogleSpreadsheet",
+          credentials: JSON.parse(`${process.env.GOOGLE_SERVICE_ACCOUNT_CREDENTIALS}`),
+      }
     },
     'gatsby-transformer-sharp',
     {
@@ -60,6 +74,6 @@ module.exports = {
         icon: config.favicon,
       },
     },
-    'gatsby-plugin-offline',
+    // 'gatsby-plugin-offline',
   ],
 };
