@@ -26,7 +26,7 @@ const Index = ({ data }) => {
   return (
     <Layout>
       <Helmet title={'TecNerd'} />
-      <Header title="TecNerd">Conociendo las nuevas tendencias tecnologicas</Header>
+      <Header title="TecNerd">Conociendo las nuevas tendencias tecnologicas ... lorem ola ke ase</Header>
       <PostWrapper>
         {speakers.map(({ node }) => (
           <PostList
